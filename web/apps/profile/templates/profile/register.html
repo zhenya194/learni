@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Register{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'profile/register.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<main class="center">
+
+    <h1>Registration</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+    <p>By creating account, you agree with our <a href="{% url 'privacy' %}">Privacy policy</a></p>
+
+</main>
+
+{% endblock %}

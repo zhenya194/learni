@@ -1,0 +1,9 @@
+main {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+#auth-error {
+    color: rgb(148, 32, 32);
+}

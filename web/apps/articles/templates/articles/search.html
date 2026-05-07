@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Articles{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'articles/search.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'createArticle' %}" class="btn btn-success" id="btnCreate">
+    <i class="fa-solid fa-plus"></i> Create your own article
+</a>
+
+{% if articles %}
+    {% for i in articles %}
+        <div class="alert alert-warning" id="less">
+            <h3>{{ i.title }}</h3>
+            <h4>{{ i.description }}</h4>
+            <a href="{% url 'specArticle' i.id %}" class="btn btn-outline-warning">Go to article</a>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No articles yet.</p>
+{% endif %}
+
+{% endblock %}

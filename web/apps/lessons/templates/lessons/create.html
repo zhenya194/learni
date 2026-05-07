@@ -1,0 +1,48 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Lessons{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'lessons/create.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<main>
+    <h2>Create a lesson</h2>
+    {% if user.is_authenticated %}
+        <a href="{% url 'reqLesson' %}"><button class="btn btn-warning non-decoration-text">Requirements to create a lesson</button></a>
+        <br><br>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.title }}
+            <br>
+            {{ form.typ }}
+            <br>
+            <div id="div_video" style="display: none;">
+                {{ form.video_url }}
+            </div>
+    
+            <div id="div_presentation" style="display: none;">
+                {{ form.presentation }}
+            </div>
+    
+            <div id="div_document" style="display: none;">
+                {{ form.document }}
+            </div>
+            {% if error %}
+            <p>{{error}}</p>
+            {% endif %}
+            
+            <br>
+            <button class="btn btn-warning" type="submit">Send to review</button>
+        </form>
+    {% else %}
+        <p>You need to be be loged in to create a lesson</p>
+    {% endif %}
+</main>
+
+<script src="{% static 'lessons/create.js' %}"></script>
+
+{% endblock %}

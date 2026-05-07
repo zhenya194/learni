@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}HTML code editor{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'code_editor/code.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <textarea name="code" rows="10" cols="60"></textarea>
+    <button type="submit">Launch</button>
+</form>
+
+{% if error %}
+<p>{{ error }}</p>
+{% endif %}
+
+<hr>
+
+{{ rcode|safe }}
+
+{% endblock %}

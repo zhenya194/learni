@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Lessons{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'lessons/search.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'createLesson' %}" class="btn btn-success" id="btnCreate">
+    <i class="fa-solid fa-plus"></i> Create your own lesson.
+</a>
+
+{% if lessons %}
+    {% for i in lessons %}
+        <div class="alert alert-warning" id="less">
+            <h3>{{ i.title }}</h3>
+            <a href="{% url 'specLesson' i.id %}" class="btn btn-outline-warning">Go to lesson</a>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No lessons yet.</p>
+{% endif %}
+
+{% endblock %}

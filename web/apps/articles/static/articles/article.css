@@ -1,0 +1,8 @@
+h1, h2, h3, p {
+    color: rgb(0, 0, 0);
+}
+
+.article {
+    align-items: center;
+    text-align: center;
+}

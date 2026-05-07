@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<h1>Your profile</h1>
+<h2>Details</h2>
+<p>Name: {{ user.first_name }}</p>
+<p>Email: {{ user.email }}</p>
+
+<form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
+
+{% endblock %}
