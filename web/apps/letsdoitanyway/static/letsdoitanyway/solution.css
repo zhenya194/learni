@@ -1,0 +1,16 @@
+main a, main i {
+    text-decoration: none;
+    color: rgb(104, 104, 104);
+    font-size: 35px;
+}
+
+main a:hover, main i:hover {
+    text-decoration: underline;
+}
+
+main h2 {
+    font-size: 45px;
+}
+main h3 {
+    font-size: 40px;
+}

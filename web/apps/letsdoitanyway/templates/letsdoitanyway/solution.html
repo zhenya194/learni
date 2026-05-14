@@ -1,0 +1,44 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ solution.title }}{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'letsdoitanyway/main.css' %}">
+<link rel="stylesheet" href="{% static 'letsdoitanyway/solution.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<main class="main-letsdoitanyway">
+    <div class="pre-solution">
+        <h2>{{ solution.title }}</h2>
+        <a href="{{ solution.url_github }}" target="_blank">Link to task</a>
+        <h3>How to download:</h3>
+    </div>
+    {% if solution.url_github %}
+        <a href="{{ solution.url_github }}" target="_blank"><i class="fa-brands fa-github"></i> Github</a>
+    {% endif %}
+    <br><br>
+    {% if solution.url_gitlab %}
+        <a href="{{ solution.url_gitlab }}" target="_blank"><i class="fa-brands fa-gitlab"></i> Gitlab</a>
+    {% endif %}
+    <br><br>
+    {% if solution.url_dropbox %}
+        <a href="{{ solution.url_dropbox }}" target="_blank"><i class="fa-brands fa-dropbox"></i> Dropbox</a>
+    {% endif %}
+    <br><br>
+    {% if solution.url_googledrive %}
+        <a href="{{ solution.url_googledrive }}" target="_blank"><i class="fa-brands fa-google-drive"></i> Google Drive</a>
+    {% endif %}
+    <br><br>
+    {% if solution.url_mega %}
+        <a href="{{ solution.url_mega }}" target="_blank"><i class="fa-solid fa-m"></i> Mega Drive</a>
+    {% endif %}
+    <br><br>
+    {% if solution.torrent %}
+        <a href="{{ solution.torrent.url }}"><i class="fa-regular fa-floppy-disk"></i> Torrent file</a>
+    {% endif %}
+
+</main>
+
+{% endblock %}

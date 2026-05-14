@@ -64,6 +64,10 @@ p {
     text-align: center;
 }
 
+.non-decoration-text {
+    text-decoration: none;
+}
+
 .right-column {
     display: flex;
     flex-direction: column;
