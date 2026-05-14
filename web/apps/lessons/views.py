@@ -16,9 +16,10 @@ def create(request):
             lesson.author = request.user
             lesson.save()
             return redirect('lessons')
+        else:
+            error = "Form is uncorrect."
     else:
         form = LessonForm()
-        error = "Form is uncorrect."
     return render(request, "lessons/create.html", {
         "form": form,
         "error": error
@@ -34,6 +35,6 @@ class LessonDetail(DetailView):
 
 def send_to_review(request, lesson_id):
     lesson = get_object_or_404(Lesson, id=lesson_id)
-    lesson.status = Lesson.Status.DRAFT
+    lesson.status = Lesson.Status.PENDING
     lesson.save()
     return redirect('lessons')

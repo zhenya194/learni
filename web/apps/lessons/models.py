@@ -28,7 +28,6 @@ class Lesson(models.Model):
     date = models.DateTimeField("Date of publish", default=timezone.now)
 
     class Status(models.TextChoices):
-        DRAFT = 'draft'
         PENDING = 'pending'
         APPROVED = 'approved'
         REJECTED = 'rejected'
@@ -38,7 +37,7 @@ class Lesson(models.Model):
     status = models.CharField(
         max_length=20,
         choices=Status.choices,
-        default=Status.DRAFT
+        default=Status.PENDING
     )
 
     def clean(self):
