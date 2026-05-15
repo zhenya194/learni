@@ -16,6 +16,5 @@ UI: `Bootstrap 5.3`, `Font Awesome 6.6`
 
 - [x] Authorization
 - [x] Opportunity to create a lesson/an article/a material for `Let's do it anyway!`
-- [ ] Opportunity to create a test
 
 ---
