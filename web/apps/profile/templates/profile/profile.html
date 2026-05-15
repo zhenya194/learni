@@ -6,7 +6,7 @@
 
 <h1>Your profile</h1>
 <h2>Details</h2>
-<p>Name: {{ user.first_name }}</p>
+<p>Name: {{ user.username }}</p>
 <p>Email: {{ user.email }}</p>
 
 <form action="{% url 'logout' %}" method="post">
