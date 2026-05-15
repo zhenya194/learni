@@ -2,8 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, CreateView
-from .models import Profile
-from .forms import UserRegisterForm
+from .models import UserRegisterForm
 from django.urls import reverse_lazy
 
 class UserProfileView(LoginRequiredMixin, TemplateView):
@@ -17,7 +16,7 @@ class UserRegisterView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
-        Profile.objects.get_or_create(user=user)
+        UserRegisterForm.objects.get_or_create(user=user)
         login(self.request, user)
         return redirect(self.success_url)
     
