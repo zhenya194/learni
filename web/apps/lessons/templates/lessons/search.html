@@ -8,19 +8,33 @@
 
 {% block content %}
 
-<a href="{% url 'createLesson' %}" class="btn btn-success" id="btnCreate">
-    <i class="fa-solid fa-plus"></i> Create your own lesson.
-</a>
+<main>
 
-{% if lessons %}
-    {% for i in lessons %}
-        <div class="alert alert-warning" id="less">
-            <h3>{{ i.title }}</h3>
-            <a href="{% url 'specLesson' i.id %}" class="btn btn-outline-warning">Go to lesson</a>
-        </div>
-    {% endfor %}
-{% else %}
-    <p>No lessons yet.</p>
-{% endif %}
+    <h1 class="text-center"><b>Lessons</b></h1>
+    <br>
+    <div class="d-flex justify-content-center text-center">
+        <a href="{% url 'createLesson' %}" class="btn btn-success" id="btnCreate">
+            <i class="fa-solid fa-plus"></i> Create your own lesson.
+        </a>
+    </div>
+    <br>
+
+    <div class="flex margin-left-right">
+        {% if lessons %}
+        {% for i in lessons %}
+            <div class="alert alert-warning" id="lesson">
+                <h3>{{ i.title }}</h3>
+                <a href="{% url 'specLesson' i.id %}" class="btn btn-outline-warning">Go to lesson</a>
+            </div>
+            {% if forloop.counter|divisibleby:4 %}
+                <div class="flex-br"></div>
+            {% endif %}
+        {% endfor %}
+        {% else %}
+            <p>No lessons yet.</p>
+        {% endif %}
+    </div>
+
+</main>
 
 {% endblock %}

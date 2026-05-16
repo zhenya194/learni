@@ -16,9 +16,10 @@ def create(request):
             article.author = request.user
             article.save()
             return redirect('articles')
+        else:
+            error = "Form is uncorrect."
     else:
         form = ArticleForm()
-        error = "Form is uncorrect."
     return render(request, "articles/create.html", {
         "form": form,
         "error": error
@@ -34,6 +35,6 @@ class ArticleDetail(DetailView):
 
 def send_to_review(request, article_id):
     article = get_object_or_404(Article, id=article_id)
-    article.status = Article.Status.DRAFT
+    article.status = Article.Status.PENDING
     article.save()
     return redirect('articles')

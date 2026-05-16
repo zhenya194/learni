@@ -17,17 +17,17 @@
     <header>
         <div class="main-menu1">
             <a href="{% url 'index' %}" id="logo"><img src="{% static 'main/logo.png' %}" alt="logo" id="logo"></a>
-            <a href="{% url 'lessons' %}" class="btn btn-warning flex" id="lessonsButton">
+            <a href="{% url 'lessons' %}" class="btn btn-warning flex-header" id="lessonsButton">
                 <i class="fa-solid fa-book"></i> Lessons
             </a>
-            <a href="{% url 'articles' %}" class="btn btn-success flex">
+            <a href="{% url 'articles' %}" class="btn btn-success flex-header">
                 <i class="fa-solid fa-newspaper"></i> Articles
             </a>
             <a href="{% url 'solutions' %}" class="btn btn-light">
                 <i class="fa-solid fa-diagram-project"></i> Let's do it anyway!
             </a>
         </div>
-        <a href="{% url 'profile' %}" class="btn btn-info flex" id="acBtn">
+        <a href="{% url 'profile' %}" class="btn btn-info flex-header" id="acBtn">
             <i class="fa-solid fa-circle-user"></i> Account
         </a>
     </header>

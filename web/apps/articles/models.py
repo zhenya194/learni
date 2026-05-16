@@ -6,11 +6,10 @@ from django.core.exceptions import ValidationError
 class Article(models.Model):
     title = models.CharField("Title of lesson", max_length=150)
     description = models.CharField("Small text of article", max_length=200)
-    image = models.FileField("Image for article")
+    image = models.FileField("Image for article", blank=True)
     date = models.DateTimeField("Date of publish", default=timezone.now)
 
     class Status(models.TextChoices):
-        DRAFT = 'draft'
         PENDING = 'pending'
         APPROVED = 'approved'
         REJECTED = 'rejected'
@@ -20,6 +19,6 @@ class Article(models.Model):
     status = models.CharField(
         max_length=20,
         choices=Status.choices,
-        default=Status.DRAFT
+        default=Status.PENDING
     )
     
