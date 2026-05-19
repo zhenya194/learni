@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import LetsDoItAnyway
+from .models import Solution
 
-class LetsDoItAnywayAdmin(admin.ModelAdmin):
+class SolutionAdmin(admin.ModelAdmin):
     list_display = ('title', 'status')
     list_filter = ('status',)
 
-admin.site.register(LetsDoItAnyway, LetsDoItAnywayAdmin)
+admin.site.register(Solution, SolutionAdmin)

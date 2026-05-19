@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.core.validators import FileExtensionValidator
 
-class LetsDoItAnyway(models.Model):
+class Solution(models.Model):
     title = models.CharField("Title of solution", max_length=150)
     task_url = models.URLField("URL to task", blank=True, null=True)
     url_github = models.URLField("URL to Github repo or tag(release)")
@@ -11,7 +11,7 @@ class LetsDoItAnyway(models.Model):
     url_googledrive = models.URLField("URL to Google Drive files", blank=True, null=True)
     url_mega = models.URLField("URL to Mega Drive files", blank=True, null=True)
     torrent = models.FileField(".torrent file",
-                                upload_to="letsdoitanyway/torrent",
+                                upload_to="solutions/torrent",
                                 validators=[FileExtensionValidator(allowed_extensions=["torrent"])],
                                 blank=True,
                                 null=True)

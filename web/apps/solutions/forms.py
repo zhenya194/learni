@@ -1,9 +1,9 @@
 from django.forms import ModelForm, TextInput, FileInput, URLInput, DateInput
-from .models import LetsDoItAnyway
+from .models import Solution
 
-class LetsDoItAnywayForm(ModelForm):
+class SolutionForm(ModelForm):
     class Meta:
-        model = LetsDoItAnyway
+        model = Solution
         fields = ["title", "task_url", "url_github", "url_gitlab", "url_dropbox", "url_googledrive", "url_mega", "torrent", "date_task"]
         widgets = {
             "title": TextInput(attrs={

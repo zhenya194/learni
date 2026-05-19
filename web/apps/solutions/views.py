@@ -1,38 +1,38 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView, UpdateView, DeleteView
-from .models import LetsDoItAnyway
-from .forms import LetsDoItAnywayForm
+from .models import Solution
+from .forms import SolutionForm
 
 def search(request):
-    solutions = LetsDoItAnyway.objects.filter(status='approved').order_by('-date_task')
-    return render(request, "letsdoitanyway/search.html", {"solutions": solutions})
+    solutions = Solution.objects.filter(status='approved').order_by('-date_task')
+    return render(request, "solutions/search.html", {"solutions": solutions})
 
 def create(request):
     error = ""
     if request.method == "POST":
-        form = LetsDoItAnywayForm(request.POST, request.FILES)
+        form = SolutionForm(request.POST, request.FILES)
         if form.is_valid():
             solution = form.save()
             solution.author = request.user
             solution.save()
             return redirect('solutions')
     else:
-        form = LetsDoItAnywayForm()
+        form = SolutionForm()
         error = "Form is uncorrect."
-    return render(request, "letsdoitanyway/create.html", {
+    return render(request, "solutions/create.html", {
         "form": form,
         "error": error
     })
 
 def requirements(request):
-    return render(request, "letsdoitanyway/requirements.html")
+    return render(request, "solutions/requirements.html")
 
 class SolutionDetail(DetailView):
-    model = LetsDoItAnyway
-    template_name = 'letsdoitanyway/solution.html'
+    model = Solution
+    template_name = 'solutions/solution.html'
     context_object_name = 'solution'
 
 def send_to_review(request, solution_id):
-    solution = get_object_or_404(LetsDoItAnyway, id=solution_id)
+    solution = get_object_or_404(Solution, id=solution_id)
     solution.save()
     return redirect('solutions')
