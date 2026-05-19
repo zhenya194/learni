@@ -9,5 +9,5 @@ urlpatterns = [
     path('profile/', include('apps.profile.urls')),
     path('lessons/', include('apps.lessons.urls')),
     path('articles/', include('apps.articles.urls')),
-    path('letsdoitanyway/', include('apps.letsdoitanyway.urls'))
+    path('solutions/', include('apps.solutions.urls'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -4,18 +4,14 @@
 {% block styles %}
 <link rel="stylesheet" href="{% static 'letsdoitanyway/main.css' %}">
 <link rel="stylesheet" href="{% static 'letsdoitanyway/search.css' %}">{% endblock %}
-{% block title %}Let's do it anyway!{% endblock %}
+{% block title %}Solutions{% endblock %}
 {% block content %}
 
 <main class="text-center">
-    <h1><b>Let's do it anyway!</b></h1>
-    <h4>
-        Don't know how to do task?
-        There can be some help!
-    </h4>
+    <h1><b>Solutions</b></h1>
     {% if solutions %}
         {% for i in solutions %}
-            <div class="alert alert-warning" id="less">
+            <div class="alert alert-warning" id="solu">
                 <h3>{{ i.title }}</h3>
                 <a href="{% url 'specSolution' i.id %}" class="btn btn-outline-warning">Go to solution</a>
             </div>
@@ -25,7 +21,7 @@
     {% endif %}
 
     <a href="{% url 'createSolution' %}" class="btn btn-success" id="btnCreate">
-        <i class="fa-solid fa-plus"></i> Create your own solution.
+        <i class="fa-solid fa-plus"></i> Create your own solution
     </a>
 
 </main>

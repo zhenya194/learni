@@ -21,6 +21,9 @@ __pycache__/
 *.sqlite3
 *.db
 
+# Logo
+logo.png
+
 # Other
 .DS_Store
 Thumbs.db
