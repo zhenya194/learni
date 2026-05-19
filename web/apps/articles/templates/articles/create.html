@@ -18,6 +18,8 @@
             {% csrf_token %}
             {{ form.title }}
             <br>
+            {{ form.description }}
+            <br>
             <br>
             {% if error %}
             <p>{{ error }}</p>
