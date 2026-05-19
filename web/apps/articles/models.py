@@ -1,12 +1,12 @@
 from django.db import models
 from django.utils import timezone
 from django.core.validators import FileExtensionValidator
-from django.core.exceptions import ValidationError
 
 class Article(models.Model):
     title = models.CharField("Title of lesson", max_length=150)
     description = models.CharField("Small text of article", max_length=200)
-    image = models.FileField("Image for article", blank=True)
+    text = models.TextField("Full text of article")
+    image = models.FileField("Image for article", blank=True, validators=[FileExtensionValidator(allowed_extensions=["png", "jpg", "jpeg"])], upload_to="articles")
     date = models.DateTimeField("Date of publish", default=timezone.now)
 
     class Status(models.TextChoices):

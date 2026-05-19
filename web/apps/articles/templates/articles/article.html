@@ -13,13 +13,11 @@
     <h2>{{ article.title }}</h2>
     <p>{{ article.date }}</p>
     <p>{{ article.description }}</p>
-    <br>
     {% if article.image %}
-        <img src="{{ article.image.url }}" alt="image">
-        <br>
+        <img src="{{ article.image.url }}" alt="Article image" class="article-image">
     {% endif %}
+    <br><br>
     <p>{{ article.text }}</p>
-    <img src="" alt="">
 </main>
 
 {% endblock %}

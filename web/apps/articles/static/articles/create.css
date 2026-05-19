@@ -5,3 +5,8 @@ form {
 .non-decoration-text {
     text-decoration: none;
 }
+
+.left-top {
+    margin-top: 20px;
+    margin-left: 15px;
+}

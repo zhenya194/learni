@@ -2,3 +2,9 @@
     align-items: center;
     text-align: center;
 }
+
+.article-image {
+    border-radius: 10px;
+    max-width: 400px;
+    max-height: 200px;
+}

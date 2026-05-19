@@ -4,7 +4,7 @@ from .models import Article
 class ArticleForm(ModelForm):
     class Meta:
         model = Article
-        fields = ["title", "description", "image"]
+        fields = ["title", "description", "text", "image"]
         widgets = {
             "title": TextInput(attrs={
                 "class": "form-control",
@@ -13,6 +13,10 @@ class ArticleForm(ModelForm):
             "description": TextInput(attrs={
                 "class": "form-control",
                 "placeholder": "Small text of article"
+            }),
+            "text": TextInput(attrs={
+                "class": "form-control",
+                "placeholder": "Full text of article"
             }),
             "image": FileInput(attrs={
                 "class": "form-control",
