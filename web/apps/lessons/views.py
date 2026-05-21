@@ -1,11 +1,26 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView, UpdateView, DeleteView
+from django.shortcuts import render
+from django.db.models import Q
 from .models import Lesson
 from .forms import LessonForm
 
 def search(request):
-    lessons = Lesson.objects.filter(status='approved').order_by('-date')
-    return render(request, "lessons/search.html", {"lessons": lessons})
+    prompt = request.GET.get("s")
+    if prompt:
+        lessons = Lesson.objects.filter(
+            Q(title__icontains=prompt),
+            status='approved'
+        ).order_by('-date')
+        return render(request, "lessons/search.html", {
+            "lessons": lessons,
+            "prompt": prompt
+        })
+    else:
+        lessons = Lesson.objects.filter(status='approved').order_by('-date')
+        return render(request, "lessons/search.html", {
+            "lessons": lessons
+        })
 
 def create(request):
     error = ""
