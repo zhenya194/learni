@@ -1,5 +1,8 @@
 # learni
 
+[![License](https://img.shields.io/badge/license-AGPL--3.0--or--later-orange.svg)](./LICENSE)
+![Status](https://img.shields.io/badge/status-active_development-green.svg)
+
 ## About
 
 Learni is a web platform in order to learn something and get materials to teach.
