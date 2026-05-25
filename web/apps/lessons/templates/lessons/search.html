@@ -1,6 +1,10 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
+{% block meta %}
+<meta name="description" content="Website for learning.">
+{% endblock %}
+
 {% block title %}Lessons{% endblock %}
 {% block styles %}
 <link rel="stylesheet" href="{% static 'lessons/search.css' %}">
@@ -8,15 +12,10 @@
 
 {% block content %}
 
-<main>
+<main class="margin-top-right">
 
     <h1 class="text-center"><b>Lessons</b></h1>
     <br>
-
-    <form method="get">
-        <input type="text" name="s" value="{{ prompt }}">
-        <button type="submit">Search</button>
-    </form>
 
     <div class="d-flex justify-content-center text-center">
         <a href="{% url 'createLesson' %}" class="btn btn-success" id="btnCreate">
@@ -24,17 +23,26 @@
         </a>
     </div>
     <br>
+    <form method="get" class="d-flex justify-content-center mb-3">
+        <div class="input-group">
+            <input type="text" name="s" value="{{ prompt }}" class="form-control" placeholder="Search for a lesson">
+            <button type="submit" class="btn gray-btn">Search</button>
+        </div>
+    </form>
+    <br>
 
     {% if lessons %}
-    <div class="flex margin-left-right">
+    <div class="flex">
         {% for i in lessons %}
-            <div class="alert alert-warning" id="lesson">
-                <h3>{{ i.title }}</h3>
+            <div class="card" id="lesson">
+              <div class="card-body">
+                <h5 class="card-title">{{ i.title }}</h5>
                 <a href="{% url 'specLesson' i.id %}" class="btn btn-outline-warning">Go to lesson</a>
+              </div>
+              <div class="card-footer text-body-secondary">
+                    <p>{{ i.date }}</p>
+              </div>
             </div>
-            {% if forloop.counter|divisibleby:4 %}
-                <div class="flex-br"></div>
-            {% endif %}
         {% endfor %}
     </div>
     {% endif %}

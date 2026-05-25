@@ -1,6 +1,6 @@
 #lesson {
     width: 20%;
-    max-width: 25%;
+    max-width: 26%;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -13,17 +13,6 @@
     padding: 10px 16px;
 }
 
-.margin-top-right {
-    margin-top: 10px;
-    margin-right: 20px;
-    margin-bottom: 35px;
-}
-
-.margin-left-right {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
 .flex {
     display: flex;
     flex-wrap: wrap;
@@ -32,6 +21,16 @@
     gap: 15px;
 }
 
-.flex-br {
+.card-footer {
     width: 100%;
+}
+
+.input-group {
+    width: 450px;
+}
+
+.grid-lessons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20%, 26%));
+  gap: 15px;
 }

@@ -76,6 +76,13 @@ h1, h2, h3, h4, p {
     margin-right: 20px;
 }
 
+.margin-top-right {
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 35px;
+}
+
 #logo {
     width: 80px;
     height: 80px;
@@ -83,4 +90,16 @@ h1, h2, h3, h4, p {
 
 #lessonsButton {
     margin-left: 5%;
+}
+
+/* Buttons */
+
+.gray-btn {
+    background-color: rgb(176 176 176);
+    border-color: rgb(176 176 176);
+}
+
+.gray-btn:hover {
+    background-color: rgb(155 155 155);
+    border-color: rgb(155 155 155);
 }

@@ -4,8 +4,21 @@ from .models import Article
 from .forms import ArticleForm
 
 def search(request):
-    articles = Article.objects.filter(status='approved').order_by('-date')
-    return render(request, "articles/search.html", {"articles": articles})
+    prompt = request.GET.get("s")
+    if prompt:
+        articles = Article.objects.filter(
+            Q(title__icontains=prompt),
+            status='approved'
+        ).order_by('-date')
+        return render(request, "lessons/search.html", {
+            "articles": articles,
+            "prompt": prompt
+        })
+    else:
+        articles = Article.objects.filter(status='approved').order_by('-date')
+        return render(request, "articles/search.html", {
+            "articles": articles
+        })
 
 def create(request):
     error = ""
