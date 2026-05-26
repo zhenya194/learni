@@ -18,6 +18,6 @@ UI: `Bootstrap 5.3`, `Font Awesome 6.6`
 ## Features
 
 - [x] Authorization
-- [x] Opportunity to create a lesson/an article/a solution
+- [x] Opportunity to create a lesson/an article
 
 ---
