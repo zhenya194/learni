@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView, UpdateView, DeleteView
+from django.db.models import Q
 from .models import Article
 from .forms import ArticleForm
 
@@ -10,7 +11,7 @@ def search(request):
             Q(title__icontains=prompt),
             status='approved'
         ).order_by('-date')
-        return render(request, "lessons/search.html", {
+        return render(request, "articles/search.html", {
             "articles": articles,
             "prompt": prompt
         })

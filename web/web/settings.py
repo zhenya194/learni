@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     'apps.profile',
     'apps.lessons',
     'apps.articles',
-    'apps.solutions'
 ]
 
 MIDDLEWARE = [
