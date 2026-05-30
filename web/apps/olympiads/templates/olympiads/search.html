@@ -1,0 +1,45 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Olympiads{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'olympiads/search.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<main class="margin-top-right">
+
+    <h1 class="text-center"><b>Olympiads</b></h1>
+    <br>
+    <form method="get" class="d-flex justify-content-center mb-3">
+        <div class="input-group">
+            <input type="text" name="s" value="{{ prompt }}" class="form-control" placeholder="Search for a article">
+            <button type="submit" class="btn gray-btn">Search</button>
+        </div>
+    </form>
+    <br>
+
+    {% if olympiads %}
+        <div class="flex">
+        {% for i in olympiads %}
+            <div class="card" id="article">
+                <div class="card-body">
+                    <h5 class="card-title">{{ i.title }}</h5>
+                    <p class="card-text">{{ i.description }}</p>
+                    <a href="{% url 'olympiad' i.id %}" class="btn btn-outline-success">Complete olympiad</a>
+                </div>
+                <div class="card-footer text-body-secondary">
+                    <p>{{ i.date }}</p>
+                </div>
+            </div>
+        {% endfor %}
+            </div>
+    {% else %}
+        <p>No olympiads for now.</p>
+    {% endif %}
+
+</main>
+
+{% endblock %}

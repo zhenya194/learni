@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Olympiad{% endblock %}
+
+{% block content %}
+
+{% if user.is_authentificated %}
+    <div>
+        <h2>You can complete this olympiad only one-time. Continue?</h2>
+    </div>
+{% else %}
+    <h2>Please, register or create an account to complete the olympiad.</h2>
+
+{% endblock %}
