@@ -16,13 +16,13 @@ class Lesson(models.Model):
     presentation = models.FileField(
         "Presentation file",
         upload_to="lessons/presentations",
-        validators=[FileExtensionValidator(allowed_extensions=["pptm", "pptx", "odp", "key", "pdf"])],
+        validators=[FileExtensionValidator(allowed_extensions=["ppt", "pptx", "pdf"])],
         blank=True
     )
     document = models.FileField(
         "Document file",
         upload_to="lessons/docs",
-        validators=[FileExtensionValidator(allowed_extensions=["doc", "docx", "docm", "odt", "pdf"])],
+        validators=[FileExtensionValidator(allowed_extensions=["doc", "docx" "pdf"])],
         blank=True
     )
     date = models.DateTimeField("Date of publish", default=timezone.now)
