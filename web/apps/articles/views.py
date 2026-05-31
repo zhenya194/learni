@@ -5,7 +5,7 @@ from .models import Article
 from .forms import ArticleForm
 
 def search(request):
-    prompt = request.GET.get("s")
+    prompt = request.GET.get("p")
     if prompt:
         articles = Article.objects.filter(
             Q(title__icontains=prompt),

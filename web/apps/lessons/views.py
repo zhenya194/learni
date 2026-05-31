@@ -6,21 +6,36 @@ from .models import Lesson
 from .forms import LessonForm
 
 def search(request):
-    prompt = request.GET.get("s")
+    prompt = request.GET.get("p")
+    typ = request.GET.get("t")
     if prompt:
+        if typ:
+            lessons = Lesson.objects.filter(
+                Q(title__icontains=prompt),
+                Q(typ__icontains=typ),
+                status="approved"
+            ).order_by("-date")
+        else:
+            lessons = Lesson.objects.filter(
+                Q(typ__icontains=typ),
+                status="approved"
+            ).order_by("-date")
+    elif typ:
+        prompt = ""
         lessons = Lesson.objects.filter(
-            Q(title__icontains=prompt),
-            status='approved'
-        ).order_by('-date')
-        return render(request, "lessons/search.html", {
-            "lessons": lessons,
-            "prompt": prompt
-        })
+            Q(typ__icontains=typ),
+            status="approved"
+        ).order_by("-date")
     else:
         lessons = Lesson.objects.filter(status='approved').order_by('-date')
         return render(request, "lessons/search.html", {
             "lessons": lessons
         })
+    return render(request, "lessons/search.html", {
+        "lessons": lessons,
+        "prompt": prompt,
+        "type": typ
+    })
 
 def create(request):
     error = ""

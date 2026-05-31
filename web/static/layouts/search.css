@@ -17,6 +17,10 @@ h3, h4 {
     padding: 10px 16px;
 }
 
+.select {
+    width: 130px;
+}
+
 .grid-articles, .grid-lessons {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20%, 26%));

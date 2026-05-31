@@ -23,11 +23,19 @@
         </a>
     </div>
     <br>
-    <form method="get" class="d-flex justify-content-center mb-3">
+    <form method="get" class="d-flex justify-content-center mb-3 flex">
         <div class="input-group">
             <input type="text" name="s" value="{{ prompt }}" class="form-control" placeholder="Search for a lesson">
-            <button type="submit" class="btn gray-btn">Search</button>
         </div>
+        <div class="select">
+            <select class="form-select" name="t" aria-label="Select type">
+              <option selected hidden value="">Type</option>
+              <option value="video">Video lesson</option>
+              <option value="presentation">Presentation</option>
+              <option value="document">Document</option>
+            </select>
+        </div>
+        <button type="submit" class="btn gray-btn">Search</button>
     </form>
     <br>
 
