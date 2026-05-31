@@ -1,4 +1,8 @@
-#article {
+h3, h4 {
+    color: rgb(40 40 40);
+}
+
+#article, #lesson {
     width: 20%;
     max-width: 26%;
     justify-content: center;
@@ -13,22 +17,10 @@
     padding: 10px 16px;
 }
 
-h3, h4 {
-    color: rgb(40 40 40);
-}
-
-.grid-articles {
+.grid-articles, .grid-lessons {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20%, 26%));
   gap: 15px;
-}
-
-.input-group {
-    width: 450px;
-}
-
-.card-footer {
-    width: 100%;
 }
 
 .flex {
@@ -37,4 +29,12 @@ h3, h4 {
     align-items: center;
     justify-content: center;
     gap: 15px;
+}
+
+.card-footer {
+    width: 100%;
+}
+
+.input-group {
+    width: 450px;
 }
