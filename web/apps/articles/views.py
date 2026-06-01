@@ -10,7 +10,7 @@ def search(request):
         articles = Article.objects.filter(
             Q(title__icontains=prompt),
             status='approved'
-        ).order_by('-date')
+        ).order_by('-date')[:15]
         return render(request, "articles/search.html", {
             "articles": articles,
             "prompt": prompt

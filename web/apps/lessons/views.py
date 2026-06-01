@@ -1,3 +1,5 @@
+from itertools import count
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView, UpdateView, DeleteView
 from django.shortcuts import render
@@ -27,7 +29,7 @@ def search(request):
             status="approved"
         ).order_by("-date")
     else:
-        lessons = Lesson.objects.filter(status='approved').order_by('-date')
+        lessons = Lesson.objects.filter(status='approved').order_by('-date')[:15]
         return render(request, "lessons/search.html", {
             "lessons": lessons
         })
