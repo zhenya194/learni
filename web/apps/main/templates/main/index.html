@@ -12,9 +12,19 @@
   <h2>many things</h2>
   <br><br><br>
 
+  <div class="flex-center text-center">
+    <div>
+      <h2>{{ lessons_count }}+</h2>
+      <p>Lessons</p>
+    </div>
+    <div>
+      <h2>{{ articles_count }}+</h2>
+      <p>Articles</p>
+    </div>
+  </div>
+
   <h2 class="text-center">Many for learn and teach</h2>
   <br><br><br>
-
   <div class="container text-center">
     <div class="row justify-content-start">
       <div class="col-4"><a class="btn btn-warning" href="{% url 'lessons' %}"><i class="fa-solid fa-book"></i> Lessons</a></div>

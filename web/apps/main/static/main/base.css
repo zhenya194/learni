@@ -47,6 +47,18 @@ h1, h2, h3, h4, p {
     color: rgb(133, 132, 132);
 }
 
+.flex {
+    display: flex;
+    gap: 15px;
+}
+
+.flex-center {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
 .main-menu1 {
     display: flex;
     gap: 20px;
