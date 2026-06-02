@@ -2,7 +2,7 @@ h3, h4 {
     color: rgb(40 40 40);
 }
 
-#article, #lesson {
+#article, #lesson, #olympiad {
     width: 20%;
     max-width: 26%;
     justify-content: center;
@@ -21,7 +21,7 @@ h3, h4 {
     width: 130px;
 }
 
-.grid-articles, .grid-lessons {
+.grid-articles, .grid-lessons, .grid-olympiad {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20%, 26%));
   gap: 15px;

@@ -3,6 +3,10 @@
 
 {% block title %}Olympiad{% endblock %}
 
+{% block styles %}
+<link rel="stylesheet" href="{% static 'layouts/search.css' %}">
+{% endblock %}
+
 {% block content %}
 
 {% if user.is_authenticated %}
