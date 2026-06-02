@@ -5,11 +5,17 @@
 
 {% block content %}
 
-{% if user.is_authentificated %}
-    <div>
-        <h2>You can complete this olympiad only one-time. Continue?</h2>
+{% if user.is_authenticated %}
+    <div class="text-center" id="ask">
+        <h2>You can complete this olympiad only one time. Continue?</h2>
+        <button type="submit" class="btn btn-primary" onclick="yes()">Yes</button>
     </div>
 {% else %}
-    <h2>Please, register or create an account to complete the olympiad.</h2>
+    <h2 class="text-center">Please, register or create an account to complete the olympiad.</h2>
+{% endif %}
+
+{% block scripts %}
+<script src="{% static 'olympiads/olympiad.js' %}"></script>
+{% endblock %}
 
 {% endblock %}
