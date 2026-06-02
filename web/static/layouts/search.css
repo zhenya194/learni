@@ -1,8 +1,13 @@
-h3, h4 {
+h1 {
+    color: rgb(124 124 124);
+}
+
+h2, h3, h4, p {
     color: rgb(40 40 40);
 }
 
 #article, #lesson, #olympiad {
+    height: 165px;
     width: 20%;
     max-width: 26%;
     justify-content: center;
@@ -15,10 +20,6 @@ h3, h4 {
     display: block;
     width: fit-content;
     padding: 10px 16px;
-}
-
-.select {
-    width: 130px;
 }
 
 .grid-articles, .grid-lessons, .grid-olympiad {
@@ -35,10 +36,24 @@ h3, h4 {
     gap: 15px;
 }
 
+.card-body {
+    width: 100%;
+    outline: 2px solid rgb(44 44 44);
+    background-color: rgb(121 121 121);
+}
+
 .card-footer {
     width: 100%;
+    outline: 2px solid rgb(44 44 44);
+    background-color: rgb(91 91 91);
 }
 
 .input-group {
+    border-radius: 15px;
     width: 450px;
+}
+
+.select {
+    border-radius: 15px;
+    width: 150px;
 }
