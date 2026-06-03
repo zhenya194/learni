@@ -8,42 +8,44 @@
 
 {% block content %}
 
-<main class="margin-top-right">
+<main>
 
-    <h1 class="text-center"><b>Articles</b></h1>
-    <br>
-    <div class="d-flex justify-content-center text-center">
-        <a href="{% url 'createArticle' %}" class="btn btn-success" id="btnCreate">
-            <i class="fa-solid fa-plus"></i> Create your own article
-        </a>
-    </div>
-    <br>
-    <form method="get" class="d-flex justify-content-center mb-3 flex">
-        <div class="input-group">
-            <input type="text" name="p" value="{{ prompt }}" class="form-control" placeholder="Search for a article">
-            <button type="submit" class="btn gray-btn">Search</button>
+    <div class="margin-top-right">
+        <h1 class="text-center"><b>Articles</b></h1>
+        <br>
+        <div class="d-flex justify-content-center text-center">
+            <a href="{% url 'createArticle' %}" class="btn btn-success" id="btnCreate">
+                <i class="fa-solid fa-plus"></i> Create your own article
+            </a>
         </div>
-    </form>
-    <br>
+        <br>
+        <form method="get" class="d-flex justify-content-center mb-3 flex">
+            <div class="input-group">
+                <input type="text" name="p" value="{{ prompt }}" class="form-control" placeholder="Search for a article">
+                <button type="submit" class="btn gray-btn">Search</button>
+            </div>
+        </form>
+        <br>
 
-    {% if articles %}
-        <div class="flex">
-        {% for i in articles %}
-            <div class="card" id="article">
-                <div class="card-body">
-                    <h5 class="card-title">{{ i.title }}</h5>
-                    <p class="card-text">{{ i.description }}</p>
-                    <a href="{% url 'specArticle' i.id %}" class="btn btn-success">Go to article</a>
+        {% if articles %}
+            <div class="flex">
+            {% for i in articles %}
+                <div class="card" id="article">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ i.title }}</h5>
+                        <p class="card-text">{{ i.description }}</p>
+                        <a href="{% url 'specArticle' i.id %}" class="btn btn-success">Go to article</a>
+                    </div>
+                    <div class="card-footer text-body-secondary">
+                        <p>{{ i.date }}</p>
+                    </div>
                 </div>
-                <div class="card-footer text-body-secondary">
-                    <p>{{ i.date }}</p>
+            {% endfor %}
                 </div>
-            </div>
-        {% endfor %}
-            </div>
-    {% else %}
-        <p>No articles yet.</p>
-    {% endif %}
+        {% else %}
+            <p>No articles yet.</p>
+        {% endif %}
+    </div>
 
 </main>
 

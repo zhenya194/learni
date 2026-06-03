@@ -6,6 +6,15 @@ h2, h3, h4, p {
     color: rgb(40 40 40);
 }
 
+main {
+    width: 100%;
+    background-color: rgb(79 79 79);
+}
+
+.margin-top-right {
+    height: 100%;
+}
+
 #article, #lesson, #olympiad {
     height: 165px;
     width: 20%;

@@ -6,12 +6,11 @@ body {
     min-height: 100vh;
     margin: 0;
     display: flex;
-    flex-direction: column;
-    background-color: rgb(53, 50, 50);
+    flex-direction: column; /**/
+    background: linear-gradient(to right, #9d7878, #5656a1);
 }
 
 #main-div {
-    background-color: rgb(53, 50, 50);
     flex: 1;
 }
 
@@ -22,19 +21,20 @@ header {
     flex-wrap: wrap;
     align-items: center;
     border-bottom: 3px solid black;
-    background-color: rgb(20, 19, 20);
+    /*background-color: rgb(20, 19, 20);*/
+    background: linear-gradient(to right, #131212, #1c1b1b, #1a1919);
     padding: 0 10px 0 10px;
 }
 
 footer {
-    background-color: rgb(20, 19, 20);
+    background: linear-gradient(to right, #131212, #1f1f1f, #131212);
     padding: 20px 0;
     color: white;
     text-align: center;
     align-items: center;
 }
 
-footer a {
+footer a, footer p {
     color: rgb(115, 115, 115);
     text-decoration: none;
 }
@@ -44,7 +44,7 @@ footer a:hover {
 }
 
 h1, h2, h3, h4, p {
-    color: rgb(133, 132, 132);
+    color: rgb(17 17 17);
 }
 
 .flex {
@@ -102,16 +102,4 @@ h1, h2, h3, h4, p {
 
 #lessonsButton {
     margin-left: 5%;
-}
-
-/* Buttons */
-
-.gray-btn {
-    background-color: rgb(176 176 176);
-    border-color: rgb(176 176 176);
-}
-
-.gray-btn:hover {
-    background-color: rgb(155 155 155);
-    border-color: rgb(155 155 155);
 }

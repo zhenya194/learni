@@ -12,48 +12,49 @@
 
 {% block content %}
 
-<main class="margin-top-right">
-
-    <h1 class="text-center"><b>Lessons</b></h1>
-    <br>
-
-    <div class="d-flex justify-content-center text-center">
-        <a href="{% url 'createLesson' %}" class="btn btn-success" id="btnCreate">
-            <i class="fa-solid fa-plus"></i> Create your own lesson
-        </a>
-    </div>
-    <br>
-    <form method="get" class="d-flex justify-content-center mb-3 flex">
-        <div class="input-group">
-            <input type="text" name="s" value="{{ prompt }}" class="form-control" placeholder="Search for a lesson">
+<main>
+    
+    <div class="margin-top-right">
+        <h1 class="text-center"><b>Lessons</b></h1>
+        <br>
+        <div class="d-flex justify-content-center text-center">
+            <a href="{% url 'createLesson' %}" class="btn btn-success" id="btnCreate">
+                <i class="fa-solid fa-plus"></i> Create your own lesson
+            </a>
         </div>
-        <div class="select">
-            <select class="form-select" name="t" aria-label="Select type">
-              <option selected hidden value="">Type</option>
-              <option value="video">Video lesson</option>
-              <option value="presentation">Presentation</option>
-              <option value="document">Document</option>
-            </select>
-        </div>
-        <button type="submit" class="btn gray-btn">Search</button>
-    </form>
-    <br>
-
-    {% if lessons %}
-    <div class="flex">
-        {% for i in lessons %}
-            <div class="card" id="lesson">
-              <div class="card-body">
-                <h5 class="card-title">{{ i.title }}</h5>
-                <a href="{% url 'specLesson' i.id %}" class="btn btn-outline-warning">Go to lesson</a>
-              </div>
-              <div class="card-footer text-body-secondary">
-                    <p>{{ i.date }}</p>
-              </div>
+        <br>
+        <form method="get" class="d-flex justify-content-center mb-3 flex">
+            <div class="input-group">
+                <input type="text" name="s" value="{{ prompt }}" class="form-control" placeholder="Search for a lesson">
             </div>
-        {% endfor %}
+            <div class="select">
+                <select class="form-select" name="t" aria-label="Select type">
+                  <option selected hidden value="">Type</option>
+                  <option value="video">Video lesson</option>
+                  <option value="presentation">Presentation</option>
+                  <option value="document">Document</option>
+                </select>
+            </div>
+            <button type="submit" class="btn gray-btn">Search</button>
+        </form>
+        <br>
+
+        {% if lessons %}
+        <div class="flex">
+            {% for i in lessons %}
+                <div class="card" id="lesson">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ i.title }}</h5>
+                    <a href="{% url 'specLesson' i.id %}" class="btn btn-outline-warning">Go to lesson</a>
+                  </div>
+                  <div class="card-footer text-body-secondary">
+                        <p>{{ i.date }}</p>
+                  </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
     </div>
-    {% endif %}
 
 </main>
 
