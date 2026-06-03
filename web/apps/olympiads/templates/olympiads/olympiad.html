@@ -3,10 +3,6 @@
 
 {% block title %}Olympiad{% endblock %}
 
-{% block styles %}
-<link rel="stylesheet" href="{% static 'layouts/search.css' %}">
-{% endblock %}
-
 {% block content %}
 
 {% if user.is_authenticated %}
@@ -16,6 +12,13 @@
         <button type="submit" class="btn btn-primary" onclick="yes()">Yes</button>
     </div>
     <div class="text-center" id="process_olympiad" style="display: none;">
+        <h2>{{ olympiad.title }} - {{ olympiad.subject }}</h2>
+        {% for task_text in olympiad.tasks.text %}
+            <h3>{{ task_text }}</h3>
+            {% for task_answer_text in olympiad.tasks.answers.answer_text %}
+                <p>{{ text_answer_text }}</p>
+            {% endfor %}
+        {% endfor %}
     </div>
 {% else %}
     <h2 class="text-center">Please, <a href="{% url 'profile' %}">register or create an account</a> to complete the olympiad.</h2>
