@@ -7,19 +7,26 @@
 
 {% if user.is_authenticated %}
     <div class="text-center" id="ask">
-        <h2>Please, be fair when you complete an olympiad.</h2>
+        <h2>Please, be honest when you complete an olympiad.</h2>
         <h2>You can complete this olympiad only one time. Continue?</h2>
         <button type="submit" class="btn btn-primary" onclick="yes()">Yes</button>
     </div>
     <div class="text-center" id="process_olympiad" style="display: none;">
-        <h2>{{ olympiad.title }} - {{ olympiad.subject }}</h2>
-        {% for task in olympiad.tasks %}
-            <h3>{{ task.text }}</h3>
-            {% for answer in task.answers %}
-                <p>{{ answer.text }}, {{ answer.is_true }}</p>
+        <form method="post">
+            {% csrf_token %}
+            <h2>{{ olympiad.title }} - {{ olympiad.subject }}</h2>
+            {% for task in olympiad.tasks.all %}
+                <h3>{{ task.text }}</h3>
+                {% for answer in task.answers.all %}
+                    <label>
+                    <input type="radio" name="task{{ task.id }}" value="{{ answer.id }}"> {{ answer.answer_text }}</label>
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
+            <button type="submit" class="btn btn-primary">Complete</button>
+        </form>
     </div>
+    Hello: {{ true_answers_count }}
+    {{ error }}
 {% else %}
     <h2 class="text-center">Please, <a href="{% url 'profile' %}">register or create an account</a> to complete the olympiad.</h2>
 {% endif %}

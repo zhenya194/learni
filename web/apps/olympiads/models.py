@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
@@ -18,6 +19,7 @@ class Olympiad(models.Model):
         choices=Status.choices,
         default=Status.DRAFT
     )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class OlympiadTask(models.Model):
     olympiad = models.ForeignKey(Olympiad, on_delete=models.CASCADE, related_name="tasks")

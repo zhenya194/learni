@@ -1,5 +1,3 @@
-from itertools import count
-
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView, UpdateView, DeleteView
 from django.shortcuts import render
@@ -19,7 +17,7 @@ def search(request):
             ).order_by("-date")
         else:
             lessons = Lesson.objects.filter(
-                Q(typ__icontains=typ),
+                Q(title__icontains=prompt),
                 status="approved"
             ).order_by("-date")
     elif typ:
