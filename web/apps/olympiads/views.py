@@ -25,6 +25,7 @@ def olympiad_detail(request, pk):
             error = "An error occured."
     return render(request, "olympiads/olympiad.html", {
         "olympiad": olympiad,
+        "tasks_count": olympiad.tasks.all().count(),
         "true_answers_count": true_answers_count,
         "true_answers_hundred": true_answers_hundred,
         "error": error,

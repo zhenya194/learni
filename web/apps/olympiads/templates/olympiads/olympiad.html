@@ -22,11 +22,22 @@
                     <input type="radio" name="task{{ task.id }}" value="{{ answer.id }}"> {{ answer.answer_text }}</label>
                 {% endfor %}
             {% endfor %}
-            <button type="submit" class="btn btn-primary">Complete</button>
+            <button type="button" class="btn btn-primary" id="old_complete_btn" onclick="to_complete()">Complete</button>
+            <div class="alert alert-danger" role="alert" id="complete_alert" style="display: none;">
+                Are you sure you want to complete this olympiad?
+            </div>
+            <button type="submit" class="btn btn-primary" id="new_complete_btn" style="display: none;" onclick="finish()">Complete</button>
         </form>
+        {% if error %}
+            <div class="alert alert-warning" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
     </div>
-    Hello: {{ true_answers_count }}
-    {{ error }}
+    <div id="olympiad_result" style="display: none;">
+        <h2>{{ true_answers_hundred }} / 100</h2>
+        <p>{{ true_answers_count }} / tasks_count</p>
+    </div>
 {% else %}
     <h2 class="text-center">Please, <a href="{% url 'profile' %}">register or create an account</a> to complete the olympiad.</h2>
 {% endif %}

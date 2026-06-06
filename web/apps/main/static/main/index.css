@@ -2,6 +2,10 @@
     margin-left: 30px;
 }
 
+.flex-center {
+    gap: 65px;
+}
+
 h1 {
     margin-left: 20px;
     padding-top: 30px;

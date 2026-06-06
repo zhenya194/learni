@@ -6,7 +6,7 @@ body {
     min-height: 100vh;
     margin: 0;
     display: flex;
-    flex-direction: column; /**/
+    flex-direction: column;
     background: linear-gradient(to right, #9d7878, #5656a1);
 }
 
@@ -21,7 +21,6 @@ header {
     flex-wrap: wrap;
     align-items: center;
     border-bottom: 3px solid black;
-    /*background-color: rgb(20, 19, 20);*/
     background: linear-gradient(to right, #131212, #1c1b1b, #1a1919);
     padding: 0 10px 0 10px;
 }
@@ -89,7 +88,7 @@ h1, h2, h3, h4, p {
 }
 
 .margin-top-right {
-    margin: 0 20px;
+    margin: 0 0;
     padding-top: 10px;
     padding-bottom: 35px;
 }

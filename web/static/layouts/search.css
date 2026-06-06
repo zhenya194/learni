@@ -1,18 +1,14 @@
-h1 {
-    color: rgb(124 124 124);
-}
-
-h2, h3, h4, p {
+h1, h2, h3, h4, p {
     color: rgb(40 40 40);
 }
 
 main {
     width: 100%;
-    background-color: rgb(79, 79, 79);
+    background: linear-gradient(to top, #9a9797, #a9913d, #e1cb32, #9a9797);
 }
 
 #article, #lesson, #olympiad {
-    height: 165px;
+    height: 170px;
     width: 20%;
     max-width: 26%;
     justify-content: center;
@@ -21,16 +17,25 @@ main {
     margin-top: 15px;
 }
 
+#article {
+    height: 185px;
+}
+
+#olympiad {
+    width: 40%;
+    max-width: 45%;
+}
+
 #btnCreate {
     display: block;
     width: fit-content;
     padding: 10px 16px;
 }
 
-.grid-articles, .grid-lessons, .grid-olympiad {
+.grid-articles, .grid-lessons, .grid-olympiads {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20%, 26%));
-  gap: 15px;
+  gap: 20px;
 }
 
 .flex {
@@ -61,4 +66,13 @@ main {
 .select {
     border-radius: 15px;
     width: 150px;
+}
+
+.border-btn {
+    border: 2px solid black;
+    background-color: #737373;
+}
+
+.border-btn:hover {
+    border: 2px solid black;
 }
