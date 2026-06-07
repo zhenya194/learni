@@ -19,7 +19,6 @@ class Olympiad(models.Model):
         choices=Status.choices,
         default=Status.DRAFT
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class OlympiadTask(models.Model):
     olympiad = models.ForeignKey(Olympiad, on_delete=models.CASCADE, related_name="tasks")
