@@ -1,16 +1,28 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from ..lessons.models import Lesson
 from ..articles.models import Article
+import random
 
 def index(request):
     lessons_count = Lesson.objects.filter(status="approved").count() - 11
     articles_count = Article.objects.filter(status="approved").count() - 11
+    articles = list(Article.objects.filter(status="approved").all())
+    articles_ids = [article.pk for article in articles]
+    random.shuffle(articles_ids)
+    random_articles = articles[:3]
+
+    lessons = list(Lesson.objects.filter(status="approved").all())
+    lessons_ids = [lesson.pk for lesson in lessons]
+    random.shuffle(lessons_ids)
+    random_lessons = lessons[:2]
+
     return render(
         request, "main/index.html",
         {
             "lessons_count": lessons_count,
-            "articles_count": articles_count
+            "articles_count": articles_count,
+            "random_articles": random_articles,
+            "random_lessons": random_lessons,
         }
     )
 

@@ -1,5 +1,29 @@
+h5, p {
+    color: #000000;
+}
+
+h5 {
+    font-weight: bold;
+}
+
 .content {
     padding-left: 30px;
+}
+
+.card {
+    border: #1a1919 1px solid;
+}
+
+.random-articles {
+    width: 19%;
+    max-width: 24%;
+    background: linear-gradient(to left, #4d4d93, #5656a1, #5959af);
+}
+
+.random-lessons {
+    width: 13%;
+    max-width: 18%;
+    background: linear-gradient(to left, #987171, #a87d7d, #a67979);
 }
 
 .flex-center {

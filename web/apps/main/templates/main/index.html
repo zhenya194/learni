@@ -10,7 +10,7 @@
 <main class="content">
   <h1>Learn</h1>
   <h2>many things</h2>
-  <br><br><br>
+  <br><br>
 
   <div class="flex-center text-center">
     <div>
@@ -22,6 +22,33 @@
       <p>Articles</p>
     </div>
   </div>
+  <br><br>
+
+  <h2 class="text-center">Learn...</h2>
+  <br>
+  <div class="flex-center text-center">
+    {% for i in random_articles %}
+      <div class="card random-articles">
+        <div class="card-body">
+          <h5 class="card-title">{{ i.title }}</h5>
+          <p class="card-text">{{ i.description }}</p>
+          <a href="{% url 'specArticle' i.id %}" class="btn btn-success">Read the article</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <br>
+  <div class="flex-center text-center" id="random-lessons">
+    {% for i in random_lessons %}
+      <div class="card random-lessons">
+        <div class="card-body">
+          <h5 class="card-title">{{ i.title }}</h5>
+          <a href="{% url 'specLesson' i.id %}" class="btn btn-warning">Go to the lesson</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <br><br>
 
   <h2 class="text-center">Many for learn and teach</h2>
   <br><br><br>
@@ -51,6 +78,7 @@
       <div class="col-4"><a class="btn btn-info" href="{% url 'lessons' %}">Soon</a></div>
     </div> -->
   </div>
+  <br><br><br>
 </main>
 
 {% endblock %}
