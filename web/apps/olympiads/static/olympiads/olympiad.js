@@ -4,7 +4,7 @@ function yes() {
     ask.style.display = "none";
     process_olympiad_tasks.style.display = "block";
 }
-m
+
 function to_complete() {
     document.getElementById("old_complete_btn").style.display = "none";
     document.getElementById("complete_alert").style.display = "block";
