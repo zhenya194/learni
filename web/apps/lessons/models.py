@@ -25,7 +25,7 @@ class Lesson(models.Model):
         validators=[FileExtensionValidator(allowed_extensions=["doc", "docx" "pdf"])],
         blank=True
     )
-    date = models.DateTimeField("Date of publish", default=timezone.now)
+    date = models.DateField("Date of publish", default=timezone.now)
 
     class Status(models.TextChoices):
         PENDING = 'pending'
