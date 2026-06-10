@@ -39,12 +39,22 @@
     </div>
     
     <footer>
-        <p>Learni</p>
-        <a href="{% url 'privacy' %}">Privacy policy</a>
-        <br>
-        <a href="https://github.com/zhenya194/learni" target="_blank"><i class="fa-brands fa-github"></i> Github</a>
+        <div class="footer-div-left">
+            <p id="timezone_element"></p>
+            <p id="time_element"></p>
+        </div>
+        <div class="footer-div-center">
+            <p>Learni</p>
+            <a href="{% url 'privacy' %}">Privacy policy</a>
+            <br>
+            <a href="https://github.com/zhenya194/learni" target="_blank"><i class="fa-brands fa-github"></i> Github</a>
+        </div>
+        <div class="footer-div-right">
+            <p>Some text</p>
+        </div>
     </footer>
 
+    <script src="{% static 'main/base.js' %}"></script>
     {% block scripts %}
     {% endblock %}
 

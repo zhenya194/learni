@@ -4,8 +4,8 @@ from ..articles.models import Article
 import random
 
 def index(request):
-    lessons_count = Lesson.objects.filter(status="approved").count() - 11
-    articles_count = Article.objects.filter(status="approved").count() - 11
+    lessons_count = Lesson.objects.filter(status="approved").all().count()
+    articles_count = Article.objects.filter(status="approved").all().count()
 
     articles = list(Article.objects.filter(status="approved").all())
     random.shuffle(articles)

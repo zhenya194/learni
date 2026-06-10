@@ -26,11 +26,30 @@ header {
 }
 
 footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
     background: linear-gradient(to right, #131212, #1f1f1f, #131212);
     padding: 20px 0;
     color: white;
-    text-align: center;
-    align-items: center;
+}
+
+.footer-div-left {
+    flex: 1;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.footer-div-center {
+    flex: 1;
+}
+
+.footer-div-right {
+    flex: 1;
+    text-align: right;
+    margin-right: 20px;
 }
 
 footer a, footer p {
