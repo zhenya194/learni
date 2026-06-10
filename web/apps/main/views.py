@@ -8,12 +8,10 @@ def index(request):
     articles_count = Article.objects.filter(status="approved").count() - 11
 
     articles = list(Article.objects.filter(status="approved").all())
-    articles_ids = [article.pk for article in articles]
     random.shuffle(articles)
     random_articles = articles[:3]
 
     lessons = list(Lesson.objects.filter(status="approved").all())
-    lessons_ids = [lesson.pk for lesson in lessons]
     random.shuffle(lessons)
     random_lessons = lessons[:2]
 
