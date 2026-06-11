@@ -18,7 +18,13 @@ def olympiad_detail(request, pk):
                 if task.answers.get(pk=int(answer_id)).is_true:
                     true_answers_count += 1
             point_per_question = 100 / olympiad.tasks.all().count()
-            true_answers_hundred = true_answers_count * point_per_question
+            true_answers_hundred = round(true_answers_count * point_per_question)
+            return render(request, "olympiads/result.html", {
+                "olympiad": olympiad,
+                "tasks_count": olympiad.tasks.all().count(),
+                "true_answers_count": true_answers_count,
+                "true_answers_hundred": true_answers_hundred,
+            })
         except KeyError:
             error = "Please, answer on all tasks."
         except:

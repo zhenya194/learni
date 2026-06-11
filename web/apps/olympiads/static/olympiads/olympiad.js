@@ -10,8 +10,3 @@ function to_complete() {
     document.getElementById("complete_alert").style.display = "block";
     document.getElementById("new_complete_btn").style.display = "block";
 }
-
-function finish() {
-    document.getElementById("process_olympiad").style.display = "none";
-    document.getElementById("olympiad_result").style.display = "block";
-}
