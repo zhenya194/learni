@@ -1,17 +1,23 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
 {% block title %}Profile{% endblock %}
 
+{% block styles %}
+<link rel="stylesheet" href="{% static 'profile/profile.css' %}">
+{% endblock %}
+
 {% block content %}
 
-<h1>Your profile</h1>
-<h2>Details</h2>
-<p>Name: {{ user.username }}</p>
-<p>Email: {{ user.email }}</p>
+<main>
+    <h1>Your profile</h1>
+    <p>Name: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
 
-<form action="{% url 'logout' %}" method="post">
-    {% csrf_token %}
-    <button type="submit">Logout</button>
-</form>
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-warning">Logout</button>
+    </form>
+</main>
 
 {% endblock %}

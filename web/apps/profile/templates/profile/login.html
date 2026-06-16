@@ -10,19 +10,15 @@
 {% block content %}
 
 <main>
-
     <form method="post">
         {% csrf_token %}
-
         {{ form.as_p }}
-
         <button type="submit" class="btn btn-warning">Login</button>
     </form>
 
     {% if form.errors %}
         <p id="auth-error">Invalid username or password.</p>
     {% endif %}
-
 </main>
 
 {% endblock %}
