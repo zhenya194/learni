@@ -2,10 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView, UpdateView, DeleteView
 from django.shortcuts import render
 from django.db.models import Q
+from django.http import HttpRequest, HttpResponse
 from .models import Lesson
 from .forms import LessonForm
 
-def search(request):
+def search(request: HttpRequest) -> HttpResponse:
     prompt = request.GET.get("p")
     typ = request.GET.get("t")
     if prompt:
@@ -37,7 +38,7 @@ def search(request):
         "type": typ
     })
 
-def create(request):
+def create(request: HttpRequest) -> HttpResponse:
     error = ""
     if request.method == "POST":
         form = LessonForm(request.POST, request.FILES)
@@ -55,7 +56,7 @@ def create(request):
         "error": error
     })
 
-def requirements(request):
+def requirements(request: HttpRequest) -> HttpResponse:
     return render(request, "lessons/requirements.html")
 
 class LessonDetail(DetailView):
@@ -63,7 +64,7 @@ class LessonDetail(DetailView):
     template_name = 'lessons/lesson.html'
     context_object_name = 'lesson'
 
-def send_to_review(request, lesson_id):
+def send_to_review(request: HttpRequest, lesson_id) -> HttpResponse:
     lesson = get_object_or_404(Lesson, id=lesson_id)
     lesson.status = Lesson.Status.PENDING
     lesson.save()

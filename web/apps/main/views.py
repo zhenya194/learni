@@ -1,9 +1,10 @@
 from django.shortcuts import render
+from django.http import HttpRequest, HttpResponse
 from ..lessons.models import Lesson
 from ..articles.models import Article
 import random
 
-def index(request):
+def index(request: HttpRequest) -> HttpResponse:
     lessons_count = Lesson.objects.filter(status="approved").all().count()
     articles_count = Article.objects.filter(status="approved").all().count()
 
@@ -25,5 +26,5 @@ def index(request):
         }
     )
 
-def privacy(request):
+def privacy(request: HttpRequest) -> HttpResponse:
     return render(request, "main/privacy.html")

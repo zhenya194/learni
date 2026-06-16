@@ -3,6 +3,7 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, CreateView
 from django.urls import reverse_lazy
+from django.http import HttpRequest, HttpResponse
 from .models import Profile
 from .forms import UserRegisterForm
 
@@ -25,6 +26,6 @@ class UserRegisterView(CreateView):
         return redirect(self.success_url)
     
 
-def logout_view(request):
+def logout_view(request: HttpRequest) -> HttpResponse:
     logout(request)
     return redirect('login')

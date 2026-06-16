@@ -1,12 +1,13 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpRequest, HttpResponse
 from .models import Olympiad
 
-def search(request):
+def search(request: HttpRequest):
     olympiads = Olympiad.objects.all().order_by("-date")
     return render(request, "olympiads/search.html",
                   {"olympiads": olympiads})
 
-def olympiad_detail(request, pk):
+def olympiad_detail(request: HttpRequest, pk) -> HttpResponse:
     olympiad = get_object_or_404(Olympiad, pk=pk)
     error: str = ""
     true_answers_count: int = 0

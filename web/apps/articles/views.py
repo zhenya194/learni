@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView, UpdateView, DeleteView
 from django.db.models import Q
+from django.http import HttpRequest, HttpResponse
 from .models import Article
 from .forms import ArticleForm
 
-def search(request):
+def search(request: HttpRequest) -> HttpResponse:
     prompt = request.GET.get("p")
     if prompt:
         articles = Article.objects.filter(
@@ -21,7 +22,7 @@ def search(request):
             "articles": articles
         })
 
-def create(request):
+def create(request: HttpRequest) -> HttpResponse:
     error = ""
     if request.method == "POST":
         form = ArticleForm(request.POST, request.FILES)
@@ -39,7 +40,7 @@ def create(request):
         "error": error
     })
 
-def requirements(request):
+def requirements(request: HttpRequest) -> HttpResponse:
     return render(request, "articles/requirements.html")
 
 class ArticleDetail(DetailView):
@@ -47,7 +48,7 @@ class ArticleDetail(DetailView):
     template_name = 'articles/article.html'
     context_object_name = 'article'
 
-def send_to_review(request, article_id):
+def send_to_review(request: HttpRequest, article_id) -> HttpResponse:
     article = get_object_or_404(Article, id=article_id)
     article.status = Article.Status.PENDING
     article.save()
