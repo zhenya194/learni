@@ -1,8 +1,13 @@
 {% extends 'main/base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'olympiads/result.css' %}">
+{% endblock %}
 
 {% block content %}
-    <div id="olympiad_result">
+    <main>
         <h2>{{ true_answers_hundred }} / 100</h2>
         <p>{{ true_answers_count }} / {{ tasks_count }}</p>
-    </div>
+    </main>
 {% endblock %}
