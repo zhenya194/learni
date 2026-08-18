@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
 from ..lessons.models import Lesson
 from ..articles.models import Article
+import datetime
 import random
 
 def index(request: HttpRequest) -> HttpResponse:
@@ -23,8 +24,11 @@ def index(request: HttpRequest) -> HttpResponse:
             "articles_count": articles_count,
             "random_articles": random_articles,
             "random_lessons": random_lessons,
+            "timezone": "UTC",
+            "time": f"{datetime.datetime.now().hour}:{datetime.datetime.now().minute}",
         }
     )
+
 
 def privacy(request: HttpRequest) -> HttpResponse:
     return render(request, "main/privacy.html")
