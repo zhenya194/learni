@@ -20,8 +20,7 @@ class Lesson(models.Model):
         BIOLOGY = "biology"
         IT = "it"
         OTHER = "other"
-
-    subject = models.CharField("Subject of lesson", max_length=150)
+    subject = models.CharField("Subject of lesson", max_length=150, choices=Subjects.choices)
     typ = models.CharField("Type of lesson", max_length=50, choices=LESSON_TYPES)
     video_url = models.URLField("URL to Youtube video", blank=True)
     presentation = models.FileField(
