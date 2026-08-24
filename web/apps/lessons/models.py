@@ -11,6 +11,17 @@ LESSON_TYPES = [
 
 class Lesson(models.Model):
     title = models.CharField("Title of lesson", max_length=150)
+    class Subjects(models.TextChoices):
+        MATH = "math"
+        ALGEBRA = "algebra"
+        GEOMETRY = "geometry"
+        PHYSICS = "physics"
+        CHEMISTRY = "chemistry"
+        BIOLOGY = "biology"
+        IT = "it"
+        OTHER = "other"
+
+    subject = models.CharField("Subject of lesson", max_length=150)
     typ = models.CharField("Type of lesson", max_length=50, choices=LESSON_TYPES)
     video_url = models.URLField("URL to Youtube video", blank=True)
     presentation = models.FileField(
@@ -49,19 +60,19 @@ class Lesson(models.Model):
         if not (has_video or has_pres or has_doc):
             raise ValidationError("At least one field must be filled in.")
 
-        if self.typ == 'video':
+        if self.typ == "video":
             if not has_video:
                 raise ValidationError("For video lesson you need to provide a link.")
             if has_pres or has_doc:
                 raise ValidationError("For video lesson you need to provide a link.")
 
-        elif self.typ == 'presentation':
+        elif self.typ == "presentation":
             if not has_pres:
                 raise ValidationError("You need to upload a presentation.")
             if has_video or has_doc:
                 raise ValidationError("You need to upload a presentation.")
 
-        elif self.typ == 'document':
+        elif self.typ == "document":
             if not has_doc:
                 raise ValidationError("You need to upload a document.")
             if has_video or has_pres:
