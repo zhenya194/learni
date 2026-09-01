@@ -9,11 +9,18 @@ from .forms import LessonForm
 def search(request: HttpRequest) -> HttpResponse:
     prompt = request.GET.get("p")
     typ = request.GET.get("t")
+    subject = request.GET.get("s")
     if prompt:
         if typ:
             lessons = Lesson.objects.filter(
                 Q(title__icontains=prompt),
                 Q(typ__icontains=typ),
+                status="approved"
+            ).order_by("-date")
+        elif subject:
+            lessons = Lesson.objects.filter(
+                Q(title__icontains=prompt),
+                Q(subject__icontains=subject),
                 status="approved"
             ).order_by("-date")
         else:
@@ -23,10 +30,17 @@ def search(request: HttpRequest) -> HttpResponse:
             ).order_by("-date")
     elif typ:
         prompt = ""
-        lessons = Lesson.objects.filter(
-            Q(typ__icontains=typ),
-            status="approved"
-        ).order_by("-date")
+        if subject:
+            lessons = Lesson.objects.filter(
+                Q(typ__icontains=typ),
+                Q(subject__icontains=subject),
+                status="approved"
+            ).order_by("-date")
+        else:
+            lessons = Lesson.objects.filter(
+                Q(typ__icontains=typ),
+                status="approved"
+            ).order_by("-date")
     else:
         lessons = Lesson.objects.filter(status='approved').order_by('-date')[:15]
         return render(request, "lessons/search.html", {
@@ -35,7 +49,8 @@ def search(request: HttpRequest) -> HttpResponse:
     return render(request, "lessons/search.html", {
         "lessons": lessons,
         "prompt": prompt,
-        "type": typ
+        "type": typ,
+        "subject": subject,
     })
 
 def create(request: HttpRequest) -> HttpResponse:
@@ -46,7 +61,7 @@ def create(request: HttpRequest) -> HttpResponse:
             lesson = form.save()
             lesson.author = request.user
             lesson.save()
-            return redirect('lessons')
+            return redirect("lessons")
         else:
             error = "Form is uncorrect."
     else:
@@ -61,11 +76,11 @@ def requirements(request: HttpRequest) -> HttpResponse:
 
 class LessonDetail(DetailView):
     model = Lesson
-    template_name = 'lessons/lesson.html'
-    context_object_name = 'lesson'
+    template_name = "lessons/lesson.html"
+    context_object_name = "lesson"
 
 def send_to_review(request: HttpRequest, lesson_id) -> HttpResponse:
     lesson = get_object_or_404(Lesson, id=lesson_id)
     lesson.status = Lesson.Status.PENDING
     lesson.save()
-    return redirect('lessons')
+    return redirect("lessons")
