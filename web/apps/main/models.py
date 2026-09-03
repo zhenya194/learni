@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils import timezone
-from ..articles.models import Article
 
 class News(models.Model):
     title = models.CharField("Title of news", max_length=150)

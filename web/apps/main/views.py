@@ -32,3 +32,6 @@ def index(request: HttpRequest) -> HttpResponse:
 
 def privacy(request: HttpRequest) -> HttpResponse:
     return render(request, "main/privacy.html")
+
+def tou(request: HttpRequest) -> HttpResponse:
+    return render(request, "main/tou.html")
