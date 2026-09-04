@@ -4,6 +4,7 @@ from ..lessons.models import Lesson
 from ..articles.models import Article
 import datetime
 import random
+import time
 
 def index(request: HttpRequest) -> HttpResponse:
     lessons_count = Lesson.objects.filter(status="approved").all().count()
@@ -17,6 +18,10 @@ def index(request: HttpRequest) -> HttpResponse:
     random.shuffle(lessons)
     random_lessons = lessons[:2]
 
+    hours = datetime.datetime.now().hour
+    minutes = datetime.datetime.now().minute
+    timezone = "UTC"
+
     return render(
         request, "main/index.html",
         {
@@ -24,8 +29,8 @@ def index(request: HttpRequest) -> HttpResponse:
             "articles_count": articles_count,
             "random_articles": random_articles,
             "random_lessons": random_lessons,
-            "timezone": "UTC",
-            "time": f"{datetime.datetime.now().hour}:{datetime.datetime.now().minute}",
+            "timezone": timezone,
+            "time": f"{hours}:{minutes}",
         }
     )
 
